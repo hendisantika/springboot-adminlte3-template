@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <title>Admin LTE 3 | Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{~/webjars/AdminLTE/3.1.0/plugins/fontawesome-free/css/all.min.css}"
+          type="text/css">
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" th:href="@{~/webjars/AdminLTE/3.1.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css}"
+          type="text/css">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{~/webjars/AdminLTE/3.1.0/dist/css/adminlte.min.css}" type="text/css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"
+          type="text/css">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="../../index2.html"><b>Admin</b>LTE 3</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg" th:if="${param.error}">
+                User/password is invalid.
+            </p>
+            <p class="login-box-msg" th:if="${param.logout}">
+                You have been logged out.
+            </p>
+
+            <p class="login-box-msg">Sign in to start your session</p>
+
+            <form method="post" th:action="@{~/login}">
+                <div class="input-group mb-3">
+                    <input class="form-control" name="username" placeholder="username" type="text">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input class="form-control" name="password" placeholder="Password" type="password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icheck-primary">
+                            <input id="remember" type="checkbox">
+                            <label for="remember">
+                                Remember Me
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-4">
+                        <button class="btn btn-primary btn-block" type="submit">Sign In</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+
+            <div class="social-auth-links text-center mb-3">
+                <p>- OR -</p>
+                <a class="btn btn-block btn-primary" href="#">
+                    <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+                </a>
+                <a class="btn btn-block btn-danger" href="#">
+                    <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+                </a>
+            </div>
+            <!-- /.social-auth-links -->
+
+            <p class="mb-1">
+                <a href="forgot-password.html">I forgot my password</a>
+            </p>
+            <p class="mb-0">
+                <a class="text-center" href="/register">Register a new membership</a>
+            </p>
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script th:src="@{~/webjars/AdminLTE/3.1.0/plugins/jquery/jquery.min.js}" type="text/javascript"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{~/webjars/AdminLTE/3.1.0/plugins/bootstrap/js/bootstrap.bundle.min.js}"
+        type="text/javascript"></script>
+<!-- AdminLTE App -->
+<script th:src="@{~/webjars/AdminLTE/3.1.0/dist/js/adminlte.min.js}" type="text/javascript"></script>
+
+</body>
+</html>
