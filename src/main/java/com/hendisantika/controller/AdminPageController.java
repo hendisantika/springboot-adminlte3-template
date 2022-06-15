@@ -27,6 +27,12 @@ public class AdminPageController {
         return "user-list";
     }
 
+    @GetMapping("/user/list2")
+    public String listUser2(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "user-list2";
+    }
+
     @GetMapping("/user/add")
     public String showFormUser(Model model) {
         model.addAttribute("user", new User());
