@@ -39,17 +39,23 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form">
+                        <form role="form" method="post" th:action="@{/user/add}" th:object="${user}">
+                            <input th:field="*{id}" type="hidden"/>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input class="form-control" id="exampleInputEmail1" placeholder="Enter email"
-                                           type="email">
+                                    <label for="email">Email address</label>
+                                    <input class="form-control" id="email" placeholder="Enter email"
+                                           type="email" th:field="*{email}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input class="form-control" id="username" placeholder="Enter username"
+                                           type="username" th:field="*{username}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
                                     <input class="form-control" id="exampleInputPassword1" placeholder="Password"
-                                           type="password">
+                                           type="password" th:field="*{password}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">File input</label>

@@ -1,7 +1,12 @@
 package com.hendisantika.controller;
 
+import com.hendisantika.entity.User;
+import com.hendisantika.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,6 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class AdminPageController {
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping({"/user/list", "/admin/user"})
     public String listUser() {
@@ -21,8 +28,16 @@ public class AdminPageController {
     }
 
     @GetMapping("/user/add")
-    public String addUser() {
+    public String showFormUser(Model model) {
+        model.addAttribute("user", new User());
         return "user-add";
+    }
+
+    @PostMapping("/user/add")
+    public String addUser(Model model, User user) {
+        userRepository.save(user);
+        model.addAttribute("user", new User());
+        return "user-list";
     }
 
 }
