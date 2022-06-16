@@ -21,9 +21,6 @@ jobs:
     services:
       mysql8:
         image: mysql
-        env:
-          MYSQL_DATABASE: lte
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
         ports:
           - 3306/tcp
         env:
@@ -31,6 +28,7 @@ jobs:
           MYSQL_USER: ${{ env.MYSQL_USER }}
           MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
           MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           options: >-
             --name=mysql8
             --health-cmd="mysqladmin ping"
