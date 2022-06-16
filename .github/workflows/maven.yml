@@ -5,7 +5,7 @@ name: AdminLTE3
 env:
   MYSQL_DATABASE: lte
   MYSQL_USER: hendi
-  MYSQL_PASSWORD: hendi
+  MYSQL_PASSWORD: 'hendi'
   MYSQL_HOST: localhost
   NODE_ENV: test
 on:
