@@ -6,7 +6,7 @@ env:
   MYSQL_DATABASE: lte
   MYSQL_USER: hendi
   MYSQL_PASSWORD: hendi
-  MYSQL_HOST: mysql8
+  MYSQL_HOST: localhost
   NODE_ENV: test
 on:
   push:
