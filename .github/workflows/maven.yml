@@ -40,8 +40,8 @@ jobs:
     steps:
     - run: |
         sudo /etc/init.d/mysql start
-        mysql -e 'CREATE DATABASE lte;' -uhendi -phendi123
-        mysql -e 'SHOW DATABASES;' -uhendi -phendi123
+        mysql -e 'CREATE DATABASE lte;' -uhendi -phendi
+        mysql -e 'SHOW DATABASES;' -uhendi -phendi
     - uses: actions/checkout@v2
     - name: Set up JDK 11
       uses: actions/setup-java@v2
