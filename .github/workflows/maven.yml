@@ -4,8 +4,8 @@
 name: AdminLTE3
 env:
   MYSQL_DATABASE: lte
-  MYSQL_USER: hendi
-  MYSQL_PASSWORD: 'hendi'
+  MYSQL_USER: root
+  MYSQL_PASSWORD: 'root'
   MYSQL_HOST: localhost
   NODE_ENV: test
 on:
@@ -16,32 +16,31 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    services:
-      mysql8:
-        image: mysql
-        ports:
-          - 3306/tcp
-        env:
-          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
-          MYSQL_USER: ${{ env.MYSQL_USER }}
-          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
-          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_PASSWORD }}
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          options: >-
-            --name=mysql8
-            --health-cmd="mysqladmin ping"
-            --health-interval=10s
-            --health-timeout=5s
-            --health-retries=3
+#    services:
+#      mysql8:
+#        image: mysql
+#        ports:
+#          - 3306/tcp
+#        env:
+#          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+#          MYSQL_USER: ${{ env.MYSQL_USER }}
+#          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+#          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+#          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+#          options: >-
+#            --name=mysql8
+#            --health-cmd="mysqladmin ping"
+#            --health-interval=10s
+#            --health-timeout=5s
+#            --health-retries=3
 #        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
     - run: |
         sudo /etc/init.d/mysql start
-        mysql -e 'CREATE DATABASE lte;' -uhendi -phendi
-        mysql -e 'SHOW DATABASES;' -uhendi -phendi
+        mysql -e 'CREATE DATABASE lte;' --uroot -proot
+        mysql -e 'SHOW DATABASES;' -uroot -proot
     - uses: actions/checkout@v2
     - name: Set up JDK 11
       uses: actions/setup-java@v2
