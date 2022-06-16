@@ -2,7 +2,12 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
 name: AdminLTE3
-
+env:
+  MYSQL_DATABASE: lte
+  MYSQL_USER: hendi
+  MYSQL_PASSWORD: hendi
+  MYSQL_HOST: mysql8
+  NODE_ENV: test
 on:
   push:
     branches: [ main ]
@@ -14,14 +19,25 @@ jobs:
 
     runs-on: ubuntu-latest
     services:
-      mysql:
+      mysql8:
         image: mysql
         env:
           MYSQL_DATABASE: lte
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
         ports:
-          - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          - 3306/tcp
+        env:
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+          MYSQL_USER: ${{ env.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+          options: >-
+            --name=mysql8
+            --health-cmd="mysqladmin ping"
+            --health-interval=10s
+            --health-timeout=5s
+            --health-retries=3
+#        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
     - uses: actions/checkout@v2
