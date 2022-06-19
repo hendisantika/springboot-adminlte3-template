@@ -38,8 +38,8 @@ public class FaviconConfiguration {
         ResourceHttpRequestHandler requestHandler
                 = new ResourceHttpRequestHandler();
         ClassPathResource classPathResource
-                = new ClassPathResource("com/baeldung/images/");
-        List<Resource> locations = Arrays.asList(classPathResource);
+                = new ClassPathResource("src/resources");
+        List<Resource> locations = List.of(classPathResource);
         requestHandler.setLocations(locations);
         return requestHandler;
     }
