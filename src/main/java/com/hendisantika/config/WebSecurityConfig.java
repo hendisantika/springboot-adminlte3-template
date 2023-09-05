@@ -54,6 +54,7 @@ public class WebSecurityConfig {
         return userDetailsManager;
     }
 
+    @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
